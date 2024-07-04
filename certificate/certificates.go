@@ -133,6 +133,61 @@ func NewCertifier(core *api.Core, resolver resolver, options CertifierOptions) *
 
 	return c
 }
+func (c *Certifier) GenerateOrder(request ObtainRequest) (*acme.ExtendedOrder, []acme.Authorization, error) {
+	if len(request.Domains) == 0 {
+		return nil, nil, errors.New("no domains to obtain a certificate for")
+	}
+
+	domains := sanitizeDomain(request.Domains)
+
+	if request.Bundle {
+		log.Infof("[%s] acme: Obtaining bundled SAN certificate", strings.Join(domains, ", "))
+	} else {
+		log.Infof("[%s] acme: Obtaining SAN certificate", strings.Join(domains, ", "))
+	}
+
+	orderOpts := &api.OrderOptions{
+		NotBefore:      request.NotBefore,
+		NotAfter:       request.NotAfter,
+		ReplacesCertID: request.ReplacesCertID,
+	}
+
+	order, err := c.core.Orders.NewWithOptions(domains, orderOpts)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	authz, err := c.getAuthorizations(order)
+	if err != nil {
+		// If any challenge fails, return. Do not generate partial SAN certificates.
+		c.deactivateAuthorizations(order, request.AlwaysDeactivateAuthorizations)
+		return nil, nil, err
+	}
+	return &order, authz, nil
+}
+func (c *Certifier) Challenge(order *acme.ExtendedOrder, authz []acme.Authorization, force bool) error {
+	if err := c.resolver.Solve(authz); err != nil {
+		// If any challenge fails, return. Do not generate partial SAN certificates.
+		c.deactivateAuthorizations(*order, force)
+		return err
+	}
+	return nil
+}
+func (c *Certifier) Finalize(order *acme.ExtendedOrder, authz []acme.Authorization, request ObtainRequest) (*Resource, error) {
+	domains := sanitizeDomain(request.Domains)
+	failures := newObtainError()
+	cert, err := c.getForOrder(domains, *order, request.Bundle, request.PrivateKey, request.MustStaple, request.PreferredChain)
+	if err != nil {
+		for _, auth := range authz {
+			failures.Add(challenge.GetTargetedDomain(auth), err)
+		}
+	}
+
+	if request.AlwaysDeactivateAuthorizations {
+		c.deactivateAuthorizations(*order, true)
+	}
+	return cert, failures.Join()
+}
 
 // Obtain tries to obtain a single certificate using all domains passed into it.
 //
