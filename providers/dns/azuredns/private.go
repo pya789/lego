@@ -12,7 +12,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/cloud"
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/privatedns/armprivatedns"
-	"github.com/go-acme/lego/v4/challenge/dns01"
+	"github.com/pya789/lego/v4/challenge/dns01"
 )
 
 // DNSProviderPrivate implements the challenge.Provider interface for Azure Private Zone DNS.

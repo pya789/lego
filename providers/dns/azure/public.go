@@ -10,8 +10,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/profiles/latest/dns/mgmt/dns"
 	"github.com/Azure/go-autorest/autorest"
 	"github.com/Azure/go-autorest/autorest/to"
-	"github.com/go-acme/lego/v4/challenge/dns01"
-	"github.com/go-acme/lego/v4/platform/config/env"
+	"github.com/pya789/lego/v4/challenge/dns01"
+	"github.com/pya789/lego/v4/platform/config/env"
 )
 
 // dnsProviderPublic implements the challenge.Provider interface for Azure Public Zone DNS.

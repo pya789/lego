@@ -17,9 +17,9 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/route53"
 	awstypes "github.com/aws/aws-sdk-go-v2/service/route53/types"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
-	"github.com/go-acme/lego/v4/challenge/dns01"
-	"github.com/go-acme/lego/v4/platform/config/env"
-	"github.com/go-acme/lego/v4/platform/wait"
+	"github.com/pya789/lego/v4/challenge/dns01"
+	"github.com/pya789/lego/v4/platform/config/env"
+	"github.com/pya789/lego/v4/platform/wait"
 )
 
 // Environment variables names.

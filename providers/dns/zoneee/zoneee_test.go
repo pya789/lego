@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-acme/lego/v4/platform/tester"
-	"github.com/go-acme/lego/v4/providers/dns/zoneee/internal"
+	"github.com/pya789/lego/v4/platform/tester"
+	"github.com/pya789/lego/v4/providers/dns/zoneee/internal"
 	"github.com/stretchr/testify/require"
 )
 

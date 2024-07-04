@@ -3,7 +3,7 @@ package whm
 import (
 	"fmt"
 
-	"github.com/go-acme/lego/v4/providers/dns/cpanel/internal/shared"
+	"github.com/pya789/lego/v4/providers/dns/cpanel/internal/shared"
 )
 
 type APIResponse[T any] struct {

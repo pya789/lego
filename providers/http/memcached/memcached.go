@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"path"
 
-	"github.com/go-acme/lego/v4/challenge/http01"
+	"github.com/pya789/lego/v4/challenge/http01"
 	"github.com/rainycape/memcache"
 )
 

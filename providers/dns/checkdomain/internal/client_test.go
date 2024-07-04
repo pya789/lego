@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/go-acme/lego/v4/challenge/dns01"
+	"github.com/pya789/lego/v4/challenge/dns01"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

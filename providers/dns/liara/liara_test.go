@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/go-acme/lego/v4/platform/tester"
+	"github.com/pya789/lego/v4/platform/tester"
 	"github.com/stretchr/testify/require"
 )
 

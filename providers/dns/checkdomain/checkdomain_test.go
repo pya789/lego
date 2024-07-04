@@ -4,8 +4,8 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/go-acme/lego/v4/platform/tester"
-	"github.com/go-acme/lego/v4/providers/dns/checkdomain/internal"
+	"github.com/pya789/lego/v4/platform/tester"
+	"github.com/pya789/lego/v4/providers/dns/checkdomain/internal"
 	"github.com/stretchr/testify/require"
 )
 
