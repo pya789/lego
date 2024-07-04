@@ -34,7 +34,6 @@ require (
 	github.com/cpu/goacmedns v0.1.1
 	github.com/dnsimple/dnsimple-go v1.7.0
 	github.com/exoscale/egoscale v0.102.3
-	github.com/go-acme/lego/v4 v4.17.4
 	github.com/go-jose/go-jose/v4 v4.0.2
 	github.com/go-viper/mapstructure/v2 v2.0.0
 	github.com/google/go-querystring v1.1.0
@@ -164,6 +163,7 @@ require (
 	github.com/sacloud/packages-go v0.0.10 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
+	github.com/smartystreets/assertions v1.0.1 // indirect
 	github.com/smartystreets/go-aws-auth v0.0.0-20180515143844-0c1422d1fdb9 // indirect
 	github.com/softlayer/xmlrpc v0.0.0-20200409220501-5f089df7cb7e // indirect
 	github.com/sony/gobreaker v0.5.0 // indirect
